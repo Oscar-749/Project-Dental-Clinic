@@ -4,6 +4,8 @@ const auth = require();
 const app = express();
 const PORT = 3000;
 
+const usersRouter = require('./routes/users');
+
 app.use(express.json());
 
 //====CORS====//
@@ -27,6 +29,6 @@ const connection = mysql.createConnection({
 app.listen(PORT, () => console.log(`Servidor levantado en el puerto ${PORT}`));
 
 //====ENRUTADO A LOS ENDPOINTS====//
-app.use('');
+app.use('/users', usersRouter);
 app.use('');
 app.use('');
