@@ -1,0 +1,27 @@
+form.login {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 70vh;
+    align-items: center;
+}
+
+.login input {
+    all: unset;
+    padding: 1em;
+    padding-top: 1px;
+    width: fit-content;
+    border-radius: 1em;
+    background-color: rgb(150, 222, 255);
+    text-align: center;
+}
+
+.login button{
+    all: unset;
+    cursor: pointer;
+    border-radius: 00.5em;
+    padding: 0.6em;
+    background-color: rgb(58, 193, 255);
+    text-align: center;
+} 

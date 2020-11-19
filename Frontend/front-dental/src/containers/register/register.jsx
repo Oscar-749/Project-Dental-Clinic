@@ -36,11 +36,8 @@ const Register = () => {
             <input type = "email" name= "email" placeholder="Introduce tu email"/>
             <input type = "password" name= "password" placeholder="Introduce tu contraseña"/>
             <input type = "number" name= "phone" placeholder="Introduce tu movil"/>
-            <input type = "text" name= "address" placeholder="Introduce tu dirección"/>
             <input type = "date" name= "birth" placeholder="Introduce tu fecha de nacimiento"/>
-            <input type = "number" name= "dni" placeholder="Introduce tu DNI"/>
             <input type = "text" name= "gender" placeholder="Introduce tu genero"/>
-            <input type = "text" name= "role" placeholder="Introduce tu role"/>
 
             <button type="submit">Registrarme</button>
         </form>
