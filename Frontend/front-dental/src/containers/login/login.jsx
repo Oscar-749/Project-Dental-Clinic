@@ -6,7 +6,9 @@ import {notification} from 'antd';
 const Login = (props) => {
 
     return(
-        
+        <form>
+            
+        </form>
     )
 }
 
