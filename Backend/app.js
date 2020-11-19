@@ -1,10 +1,11 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
-const auth = require();
 const app = express();
 const PORT = 3000;
 
 const usersRouter = require('./routes/users');
+//const appointmentRouter = require('');
+//const historyRouter = require('');
 
 app.use(express.json());
 
@@ -26,9 +27,9 @@ const connection = mysql.createConnection({
 .then(() => console.log('Base de Datos funcionando'))
 .catch((error) => console.log('Error al conectar la DataBase'));
 
-app.listen(PORT, () => console.log(`Servidor levantado en el puerto ${PORT}`));
+app.listen(PORT, () => console.log('Servidor levantado en el puerto ' + PORT));
 
 //====ENRUTADO A LOS ENDPOINTS====//
 app.use('/users', usersRouter);
-app.use('');
-app.use('');
+// app.use('');
+// app.use('');
