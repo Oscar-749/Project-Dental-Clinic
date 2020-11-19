@@ -1,8 +1,8 @@
-import {BrowserRouter, Switch, Route, NavLink} from 'react-router-dom'
-import {useEffect, useState} from 'react';
-import axios from 'axios';
 import './App.css';
 import 'antd/dist/antd.css'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {useEffect, useState} from 'react';
+import axios from 'axios';
 
 import Header from './components/header/header';
 import Home from './containers/home/home';
@@ -15,11 +15,11 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if(token){
-      axios.get('http://localhost:3001/users/profile',{headers:{Authorization:token}})
+      axios.get('http://localhost:3000/users/profile',{headers:{Authorization:token}})
       .then(res => setUser(res.data))
     }
   }, [])
-  
+
   return (
     <BrowserRouter>
       <Header user ={user} setUser={setUser}/>

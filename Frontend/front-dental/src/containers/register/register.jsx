@@ -22,6 +22,7 @@ const Register = () => {
             await axios.post('http://localhost:3000/users/register', user)
             notification.success({message:'Usuario registrado correctamente'})
             history.push('/login')
+            console.log(user);
         }catch(error){
             console.log(error)
             notification.error({message: 'Error al registrarte'})
