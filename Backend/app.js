@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
 const app = express();
+const bodyparser = require('body-parser');
 const PORT = 3000;
 
 const usersRouter = require('./routes/users');
@@ -8,6 +9,7 @@ const usersRouter = require('./routes/users');
 //const historyRouter = require('');
 
 app.use(express.json());
+app.use(bodyparser.json());
 
 //====CORS====//
 app.use((req, res, next) => {
