@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
-const {User} = require('../models/');
+const User = require('../models');
 
 const auth = async(req, res, next) => {
     try {
         const token = req.headers.authorization;
-        const payload = jwt.verify(token, 'eltoken');
+        const payload = jwt.verify(token, 'oscar');
         const user = await User.findByPk(payload.id);
         if (!user) {
             return res.status(401).send({message: 'No estas autorizado'})

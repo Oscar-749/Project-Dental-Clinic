@@ -1,10 +1,9 @@
-const { User, Sequelize} = require("../models/index");
+const { User, Appointment, Sequelize, Token} = require("../models");
 const Op = Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const chalk = require('chalk');
-const auth = require('../middleware/auth');
-const user = require('../models/user');
+const user = require('../models/user.js');
 
 const UserController = {
 
@@ -32,38 +31,28 @@ const UserController = {
     },
 
     async login(req, res){
-        // try {
-        //     const user = await User.findOne({
-        //         where: {
-        //             email: req.body.email
-        //         }
-        //     });
-        //     const isMatch = await bcrypt.compare(req.body.password, user.password);
-        //     if (!isMatch) {
-        //         throw new Error('Credenciales incorrectas');
-        //     }
-        //     const token = jwt.sign({ id: user.id }, 'Estas dentro', { expiresIn: '1y' });
+        try {
+            const user = await User.findOne({
+                where: {email: req.body.email}
+            });
+
+            const isMatch = await bcrypt.compare(req.body.password, user.password);
+            if (!isMatch) {
+                throw new Error('Credenciales incorrectas');
+            }
+            const token = jwt.sign({ id: user.id },'Estas dentro', { expiresIn:'1y'});
             
-        //     await Token.create({ token, UserId: user.id, revoked: false });
-        //     res.send({
-        //         user,
-        //         token
-        //     })
-        // } catch (error) {
-        //     console.error(error);
-        //     return res.status(500).send({
-        //         message: 'Incorrecto'
-        //     });
-        // }
+            await Token.create({ token, UserId: user.id, revoked: false });
+            res.send({user, token})
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send({message: 'Usuario o contraseña incorrectos'});
+        }
     },
     
-    profile(req, res){
-        res.send(req.user)
-    },
-
-    updateUser(req, res){
-
-    },
+    // profile(req, res){
+    //     res.send(req.user)
+    // },
   
     async deleteUser(req, res){
         try {
