@@ -5,7 +5,7 @@ const bodyparser = require('body-parser');
 const PORT = 3000;
 
 const usersRouter = require('./routes/users');
-//const appointmentRouter = require('');
+const appointmentRouter = require('./routes/appointmen');
 //const historyRouter = require('');
 
 app.use(express.json());
@@ -33,5 +33,5 @@ app.listen(PORT, () => console.log('Servidor levantado en el puerto ' + PORT));
 
 //====ENRUTADO A LOS ENDPOINTS====//
 app.use('/users', usersRouter);
-// app.use('');
+app.use('/appointments', appointmentRouter);
 // app.use('');

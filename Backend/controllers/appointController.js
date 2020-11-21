@@ -3,13 +3,14 @@ const {Appointment, User, Sequelize} = require('../models/index');
 const Op = Sequelize;
 
 const AppointmentController = {
-    getAll(req, res){
-        Appointment.findAll()
-        .then(users => res.send(appointment))
-        .catch(error => {
-            console.log(error)
-            res.status(500).send({message:'Hubo un problema en crear el usuario'});
-        })
+    async getAll(req, res){
+        try{
+            const appointment = await Appointment.find();
+            res.send(appointment);
+        }catch(error){
+            console.log(error);
+            res.status(500).send({message: "Hay algun problema"});
+        }
     },
 
     async createAppoint(req, res){
