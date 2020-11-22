@@ -13,7 +13,7 @@ const Header = (props) => {
             <div className="user">
                 {props.user ?
                     <>
-                        <NavLink to="/appointment">Pedir Cita</NavLink>
+                        <NavLink to="/appointment">Citas</NavLink>
                         <span>{props.user?.name}</span>
                         <span onClick={logout}>Cerrar Sesión</span>
                          

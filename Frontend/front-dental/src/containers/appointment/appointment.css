@@ -23,3 +23,7 @@ form.appointment {
     padding: 1em;
     background-color: rgb(58, 193, 255);
 }
+
+h2 {
+    margin-left: 0em;
+}

@@ -10,6 +10,7 @@ import Login from './containers/login/login';
 import Register from './containers/register/register';
 import Appointment from './containers/appointment/appointment';
 
+
 function App() {
   const [user, setUser] = useState(null);
 
@@ -24,6 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header user ={user} setUser={setUser}/>
+      
 
       <Switch>
         <Route path="/" component={Home} exact/>

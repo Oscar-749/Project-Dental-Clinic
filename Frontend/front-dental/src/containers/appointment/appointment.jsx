@@ -28,7 +28,7 @@ const Appointment = () => {
 
     return(
         <form className = "appointment" onSubmit = {handleSubmit}>
-        <h1>Pide tu Cita</h1>
+            <h2>Pide tu Cita</h2>
             <input type = "text" name= "name" placeholder="Introduce tu nombre"/>
             <input type = "email" name= "email" placeholder="Introduce tu email"/>
             <input type = "date" name= "date" placeholder="Introduce la hora"/>
