@@ -51,10 +51,6 @@ const UserController = {
             res.status(400).send({message: 'Hubo un problema al intentar iniciar sesión con el usuario, verifique los campos'});
         }
     },
-    
-    // profile(req, res){
-    //     res.send(req.user)
-    // },
   
     async deleteUser(req, res){
         try {
