@@ -8,6 +8,7 @@ import Header from './components/header/header';
 import Home from './containers/home/home';
 import Login from './containers/login/login';
 import Register from './containers/register/register';
+import Appointment from './containers/appointment/appointment';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" component={Home} exact/>
         <Route path="/register" component={Register} exact/>
         <Route path="/login" children={<Login user={user} setUser={setUser}/>} exact/>
+        <Route path ="/appointment" component={Appointment} exact/>
       </Switch>
     </BrowserRouter>
   );

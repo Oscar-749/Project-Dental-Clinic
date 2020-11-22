@@ -13,8 +13,10 @@ const Header = (props) => {
             <div className="user">
                 {props.user ?
                     <>
-                        <span>{props.user?.email}</span>
+                        <NavLink to="/appointment">Pedir Cita</NavLink>
+                        <span>{props.user?.name}</span>
                         <span onClick={logout}>Cerrar Sesión</span>
+                         
                     </> :
                     <>
                         <NavLink to="/login">Iniciar Sesión</NavLink>
