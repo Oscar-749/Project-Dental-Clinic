@@ -1,4 +1,4 @@
-const { User, Appointment, Sequelize, Token} = require("../models");
+const { User, Appointment, Sequelize} = require("../models");
 const Op = Sequelize;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -35,18 +35,20 @@ const UserController = {
             const user = await User.findOne({
                 where: {email: req.body.email}
             });
+            if(!user){
+                return res.status(400).send({message:'Correo o contraseña incorrectas'});
+            }
 
             const isMatch = await bcrypt.compare(req.body.password, user.password);
             if (!isMatch) {
-                throw new Error('Credenciales incorrectas');
+                return res.status(400).send({message: 'Wrong credentials'});            
             }
-            const token = jwt.sign({ id: user.id },'Estas dentro', { expiresIn:'1y'});
+            const token = jwt.sign({ id: user.id },'oscar', { expiresIn:'1y'})
             
-            await Token.create({ token, UserId: user.id, revoked: false });
-            res.send({user, token})
+            res.send({user, token, message:'Has iniciado sesión'})
         } catch (error) {
-            console.error(error);
-            return res.status(500).send({message: 'Usuario o contraseña incorrectos'});
+            console.error(chalk.red(error))           
+            res.status(400).send({message: 'Hubo un problema al intentar iniciar sesión con el usuario, verifique los campos'});
         }
     },
     
