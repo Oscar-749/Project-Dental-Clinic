@@ -24,12 +24,17 @@ const AppointmentController = {
     },
 
     async deleteAppoint(req, res) {
-        try{
-            const appointment = await Appointment.findByIdAndDelete(req.params.id)
-            res.json({message:'Cita cancelada con exito'});
-        }catch(error){
-            console.log(error);
-            res.status(500).send({message:'Hay algun problema al eliminar la cita', error})
+        try {
+            const { id } = req.params
+            const appointment = await Appointment.destroy({
+                where : {
+                    id : id
+                }
+            })
+            res.status(200).send({ message : 'Te eliminaste, no te extrañaremos.'})
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message : 'Pon tus credenciales correctas'})
         }
     }
 };
