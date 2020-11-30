@@ -13,10 +13,10 @@ const Appointment = () => {
             const appointment = {
                 name: form.name.value,
                 email:form.email.value,
-                appointment_time: form.appointment_time.value,
-                service: form.service.value
+                appointment_time: form.appointment_time?.value,
+                service: form.service?.value
             }
-            await axios.post('http://localhost:3000/users/appointment', appointment)
+            await axios.post('http://localhost:3000/appointments/create', appointment)
             notification.success({message:'Cita creada correctamente'})
             history.push('/')
             console.log(appointment);
